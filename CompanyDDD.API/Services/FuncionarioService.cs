@@ -68,5 +68,5 @@ namespace CompanyDDD.API.Services;
             return funcionario;
         }
     }
-}
+
 
