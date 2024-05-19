@@ -1,7 +1,14 @@
 using CompanyDDD.API.Services;
+<<<<<<< HEAD
 using CompanyDDD.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 
+=======
+using CompanyDDD.Domain.Repositories;
+using CompanyDDD.Infra.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
+>>>>>>> 9f39fbdd47bc3f59741e5548af1d6781e3827fbe
 
 var builder = WebApplication.CreateBuilder(args);
 
