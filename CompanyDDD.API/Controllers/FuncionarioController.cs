@@ -1,6 +1,7 @@
 ﻿using CompanyDDD.API.Services;
 using CompanyDDD.Domain.DTOs;
 using CompanyDDD.Domain.Entities;
+using CompanyDDD.Domain.Validators;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CompanyDDD.API.Controllers;
@@ -16,49 +17,59 @@ public class FuncionarioController : ControllerBase
         _funcionarioService = funcionarioService;
     }
 
-    [HttpGet]
+    [HttpGet("ListarFuncionarios")]
     public async Task<ActionResult<List<Funcionario>>> GetAllFuncionarios()
     {
         var funcionarios = await _funcionarioService.GetAllAsync();
         return Ok(funcionarios);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("BuscarPorId{id}")]
     public async Task<ActionResult<Funcionario>> GetFuncionarioById(int id)
     {
         var funcionario = await _funcionarioService.GetByIdAsync(id);
         if (funcionario == null)
         {
-            return NotFound();
+            return BadRequest("Funcionario não encontrado");
         }
         return Ok(funcionario);
     }
 
-    [HttpPost]
+    [HttpPost("AdicionarFuncionario")]
     public async Task<ActionResult<Funcionario>> AddFuncionario(FuncionarioCreateDTO funcionarioCreateDTO)
     {
+        var validator = new FuncionarioCreateDTOValidator();
+        var validationResult = await validator.ValidateAsync(funcionarioCreateDTO);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest("Erro ao adicionar funcionario");
+            return BadRequest(validationResult.Errors);
+        }
+
         var funcionario = await _funcionarioService.AddAsync(funcionarioCreateDTO);
-        return funcionario;
+        return Ok(funcionario);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("AtualizarFuncionario{id}")]
     public async Task<ActionResult<Funcionario>> UpdateFuncionario(int id, FuncionarioUpdateDTO funcionarioUpdateDTO)
     {
-        if (id != funcionarioUpdateDTO.Id)
+        var validator = new FuncionarioUpdateDTOValidator();
+        var validationResult = await validator.ValidateAsync(funcionarioUpdateDTO);
+        if (!validationResult.IsValid)
         {
-            return BadRequest();
+            return BadRequest(validationResult.Errors);
         }
 
         var funcionario = await _funcionarioService.UpdateAsync(funcionarioUpdateDTO);
         if (funcionario == null)
         {
-            return null;
+            return NotFound();
         }
 
         return Ok(funcionario);
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("DeletarFuncionario{id}")]
     public async Task<ActionResult> DeleteFuncionario(int id)
     {
         await _funcionarioService.DeleteAsync(id);
