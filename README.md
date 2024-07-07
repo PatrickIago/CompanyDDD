@@ -20,4 +20,4 @@ Esta é uma API desenvolvida utilizando o padrão DDD (Domain-Driven Design) em 
 
 1. **Clonando o Repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/PatrickIago/CompanyDDD.git)
