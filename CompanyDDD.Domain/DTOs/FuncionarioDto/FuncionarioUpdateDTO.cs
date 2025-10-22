@@ -1,4 +1,5 @@
-namespace CompanyDDD.Domain.DTOs;
+namespace CompanyDDD.Domain.DTOs.FuncionarioDto;
+
 public class FuncionarioUpdateDTO
 {
     public int Id { get; set; }

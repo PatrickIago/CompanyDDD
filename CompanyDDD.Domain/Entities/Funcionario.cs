@@ -1,4 +1,5 @@
 ﻿namespace CompanyDDD.Domain.Entities;
+
 public class Funcionario
 {
     public int Id { get; set; }
@@ -7,4 +8,8 @@ public class Funcionario
     public decimal Salario { get; set; }
     public string Email { get; set; }
     public string Contato { get; set; }
+
+    // Relacionamento com Departamento
+    public int DepartamentoId { get; set; }
+    public virtual Departamento Departamento { get; set; }
 }

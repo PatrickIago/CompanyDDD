@@ -1,6 +1,8 @@
 using CompanyDDD.API.Services;
-using CompanyDDD.Domain.Validators;
+using CompanyDDD.Application.Validators.FuncionarioValidators;
+using CompanyDDD.Domain.Repositories;
 using CompanyDDD.Infra.Data;
+using CompanyDDD.Infra.Services;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,15 +10,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler =
+            System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers()
-    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FuncionarioValidator>());
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FuncionarioCreateValidator>());
 
-builder.Services.AddScoped<FuncionarioService>();
+builder.Services.AddScoped<IFuncionarioRepository, FuncionarioService>();
+builder.Services.AddScoped<IDepartamentoRepository, DepartamentoService>();
 
 builder.Services.AddDbContext<CompanyDbContext>(options =>
 {
