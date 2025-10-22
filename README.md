@@ -48,7 +48,5 @@ A API é dividida em dois recursos principais, cobrindo operações CRUD (Create
 | | `PUT` | `/api/Departamento/Atualiza?id={id}` | **[UPDATE]** Atualiza os dados de um departamento. |
 | | `DELETE` | `/api/Departamento/Remove?id={id}` | **[DELETE]** Remove um departamento pelo ID. |
 
-## ⚙️ Instalação e Execução Local
 
-Siga estes passos para configurar e rodar o projeto na sua máquina:
 
