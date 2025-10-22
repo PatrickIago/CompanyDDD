@@ -52,28 +52,3 @@ A API é dividida em dois recursos principais, cobrindo operações CRUD (Create
 
 Siga estes passos para configurar e rodar o projeto na sua máquina:
 
-### 1. Pré-requisitos
-
-* [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
-* SQL Server instalado e acessível (LocalDB, Express ou similar).
-
-### 2. Clonar e Configurar
-
-1.  Clone o repositório:
-    ```bash
-    git clone [https://github.com/SeuUsuario/SeuRepositorio.git](https://github.com/SeuUsuario/SeuRepositorio.git)
-    cd CompanyDDD
-    ```
-2.  **Ajuste a Connection String** no arquivo `appsettings.json` na pasta `CompanyDDD.API` para apontar para o seu SQL Server local.
-3.  Aplique as migrations do Entity Framework:
-    ```bash
-    dotnet ef database update --project CompanyDDD.Infrastructure
-    ```
-
-### 3. Iniciar a API
-
-Navegue para a pasta da API e execute:
-
-```bash
-cd CompanyDDD.API
-dotnet run
