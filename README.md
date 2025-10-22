@@ -1,23 +1,25 @@
-# CompanyAPI - CRUD de Funcionários com DDD
+# CompanyDDD - Sistema de Gerenciamento de Funcionários e Departamentos
 
-Esta é uma API desenvolvida utilizando o padrão DDD (Domain-Driven Design) em .NET 8, demonstrando um CRUD básico de funcionários.
+## Descrição do Projeto
+O **CompanyDDD** é uma aplicação backend desenvolvida em **.NET 8** seguindo o padrão **Domain-Driven Design (DDD)**.  
+O sistema permite gerenciar **funcionários** e **departamentos**, incluindo operações de **CRUD** (Create, Read, Update, Delete), validação de dados e regras de negócio.
 
-## Funcionalidades
+A aplicação utiliza:
+- **Entity Framework Core** para acesso a banco de dados SQL Server
+- **DTOs** para transferência de dados entre camadas
+- **FluentValidation** para validação de entradas
+- **AutoMapper** para mapeamento entre entidades e DTOs (opcional, recomendado para código limpo)
 
-- **Cadastro de Funcionário:** Endpoint para criar novos funcionários na empresa.
-- **Consulta de Funcionário:** Endpoint para listar todos os funcionários ou obter um funcionário específico por ID.
-- **Atualização de Funcionário:** Endpoint para atualizar informações de um funcionário existente.
-- **Exclusão de Funcionário:** Endpoint para remover um funcionário do sistema.
+---
 
-## Tecnologias Utilizadas
+## Tecnologias e Bibliotecas
+- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
+- [FluentValidation](https://docs.fluentvalidation.net/en/latest/)
+- [AutoMapper](https://automapper.org/)
+- [Swagger / Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) para documentação de API
 
-- **.NET 8:** Framework principal para o desenvolvimento da API.
-- **Entity Framework Core:** ORM utilizado para mapeamento objeto-relacional e interação com o banco de dados.
-- **Swagger:** Ferramenta para documentação automática da API e teste de endpoints.
-- **Dapper:** Utilizado para operações de consulta customizadas, quando necessário.
+---
 
-## Configuração e Uso
+## Estrutura do Projeto
 
-1. **Clonando o Repositório:**
-   ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/PatrickIago/CompanyDDD.git)
