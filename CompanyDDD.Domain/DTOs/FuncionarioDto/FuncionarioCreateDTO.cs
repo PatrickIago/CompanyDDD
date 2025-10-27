@@ -1,5 +1,4 @@
 namespace CompanyDDD.Domain.DTOs.FuncionarioDto;
-
 public class FuncionarioCreateDTO
 {
     public string Nome { get; set; }

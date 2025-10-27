@@ -1,6 +1,5 @@
 ﻿using CompanyDDD.Domain.DTOs.FuncionarioDto;
 namespace CompanyDDD.Domain.Repositories;
-
 public interface IFuncionarioRepository
 {
     Task<FuncionarioDTO> GetByIdAsync(int id);
